@@ -14,4 +14,6 @@ def validate_email(self,data_field):
     if User.query.filter_by(email = data_field.data).first():
         raise ValidationError('There is an account with the email')
 
-        
+def validate_username(self,data_field):
+    if User.query.filter_by(username = data_field.data).first():
+        raise ValidationError('This username already exists')        
