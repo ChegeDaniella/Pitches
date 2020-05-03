@@ -10,7 +10,7 @@ login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 
 bootstrap= Bootstrap()
-db= SQLAlchemy()
+db = SQLAlchemy()
 
 def create_app():
     app= Flask(__name__)
