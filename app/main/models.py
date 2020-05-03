@@ -1,6 +1,20 @@
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 
+class Pitches:
+    all_pitches = []
+
+    def __init__(self,comment,category):
+        self.comment = comment
+        self.category = category
+
+    def save_pitch(self):
+        Pitches.all_pitches.append(self)
+
+    @classmethod
+    def clear_reviews(cls):
+        Pitches.all_pitches.clear()        
+
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
