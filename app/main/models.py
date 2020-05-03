@@ -4,16 +4,20 @@ from werkzeug.security import generate_password_hash,check_password_hash
 class Pitches:
     all_pitches = []
 
-    def __init__(self,comment,category):
+    def __init__(self,comment):
         self.comment = comment
-        self.category = category
+        # self.category = category
 
     def save_pitch(self):
         Pitches.all_pitches.append(self)
 
     @classmethod
     def clear_reviews(cls):
-        Pitches.all_pitches.clear()        
+        Pitches.all_pitches.clear()   
+
+    # @classmethod
+    # def get_pitches(cls,id):
+
 
 class User(db.Model):
     __tablename__ = 'users'
