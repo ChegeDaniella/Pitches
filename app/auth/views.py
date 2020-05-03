@@ -1,8 +1,11 @@
-from flask import render_template,redirect,url_for
-from .forms import SignUpForm
-from app import auth
+from flask import render_template
+from . import auth
+# # from .forms import SignUpForm
+# from app import auth
 
-@auth.route('/signup',methods = ["GET","POST"])
+
+@auth.route('/signup')
 def signup():
-    form = SignUpForm()
-    return render_template('auth/signup.html', signup_form = form)
+    
+    return render_template('auth/signup.html')
+    
