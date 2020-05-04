@@ -1,15 +1,15 @@
 from flask import render_template
 from . import main 
 from .forms import PitchForm
-
-# from flask_login import login_required
+from flask_login import login_required
 
 @main.route('/')
-# @login_required
+
 def index():
     return render_template('index.html')
 
 @main.route('/pitch')
+@login_required
 def Pitches():
     form = PitchForm()
 
