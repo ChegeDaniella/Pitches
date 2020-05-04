@@ -1,0 +1,3 @@
+Hello {{user.username}}
+Welcome to one minute,
+You have successfully signed up and we appreciate you for that.Please feel free to comment and vote on our pitches.
