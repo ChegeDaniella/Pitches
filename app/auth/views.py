@@ -6,7 +6,7 @@ from . import auth
 from flask_login import login_user,logout_user,login_required
 
 
-@auth.route('/signup', methods = ["GET","POST"])
+@auth.route('/sign_up', methods = ["GET","POST"])
 def signup():
     form = SignUpForm()
     if form.validate_on_submit():
@@ -15,7 +15,7 @@ def signup():
         db.session.commit()
         return redirect(url_for('auth.SignIn'))
     
-    return render_template('auth/signup.html', signup_form = form)
+    return render_template('auth/sign_up.html', signup_form = form)
 
 @auth.route('/login', methods=['GET','POST'])
 def login():
