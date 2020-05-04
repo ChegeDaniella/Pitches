@@ -3,6 +3,7 @@ from app.main.models import User
 from .forms import SignUpForm, LoginForm
 from .. import db
 from . import auth
+from flask_login import login_user,logout_user,login_required
 
 
 @auth.route('/signup', methods = ["GET","POST"])
@@ -28,5 +29,12 @@ def login():
         flash('Invalid username or password')
 
         return render_template('auth/login.html' login_form = login_form)    
+
+@auth.route('/logout')
+@login_required
+def logout():
+    login_user()
+    return redirect(url_for("main.index"))
+
 
     
