@@ -5,7 +5,7 @@ from app.main.models import User
 
 class SignUpForm(FlaskForm):
     username = StringField('Please enter your username', validators= [Required()])
-    email = StringField('Enter your username', validators= [Required(),Email()])
+    email = StringField('Enter your username', validators= [Required()])
     password = PasswordField('Enter password',validators=[Required(), EqualTo('password_confirm',message = 'Password must be the same')])
     password_confirm = PasswordField('Confirm password', validators = [Required()])
     submit = SubmitField('Sign Up')
@@ -19,7 +19,7 @@ def validate_username(self,data_field):
         raise ValidationError('This username already exists')
 
 class LoginForm(FlaskForm):
-    email = StringField("Enter your email address",validators=[Required(),Email()])
+    email = StringField("Enter your email address",validators=[Required()])
     password = PasswordField('Enter password',validators=[Required()])
     remember = BooleanField('Remember me')
     submit = SubmitField('Sign In')
