@@ -13,7 +13,7 @@ def signup():
         user = User(email = form.email.data, username = form.username.data, password = form.password.data)
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('auth.SignIn'))
+        return redirect(url_for('auth.login'))
     
     return render_template('auth/sign_up.html', signup_form = form)
 
@@ -28,7 +28,7 @@ def login():
 
         flash('Invalid username or password')
 
-        return render_template('auth/login.html' ,login_form = login_form)    
+    return render_template('auth/login.html' ,login_form = login_form)    
 
 @auth.route('/logout')
 @login_required
