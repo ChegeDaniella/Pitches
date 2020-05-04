@@ -1,8 +1,8 @@
-from flask import render_template
+from flask import render_template,redirect,url_for,abort
 from . import main 
 from .forms import PitchForm
 from flask_login import login_required
-
+from ..models import User,Pitches 
 @main.route('/')
 
 def index():
@@ -10,7 +10,7 @@ def index():
 
 @main.route('/pitch')
 @login_required
-def Pitches():
+def Pitche():
     form = PitchForm()
 
     if form.validate_on_submit():
@@ -20,3 +20,13 @@ def Pitches():
 
 
     return render_template('pitch.html' , pitch_form = form)
+
+@main.route('/user/<uname>')
+def profile(uname):
+    user = User.query.filter_by(username = uname).first()
+
+    if user is None:
+        abort(404)
+
+    return render_template("profile/profile.html", user=user)    
+

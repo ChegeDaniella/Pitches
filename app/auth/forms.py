@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, ValidationError, BooleanField
 from wtforms.validators import Required,Email,EqualTo
-from app.main.models import User
+from app.models import User
 
 class SignUpForm(FlaskForm):
     username = StringField('Please enter your username', validators= [Required()])
