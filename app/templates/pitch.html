@@ -1,14 +1,34 @@
 {% extends 'base.html'%}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block content %}
-    <div class="container">
-        <div class="row">
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/pitch.css')}}">
+{% endblock %}
+
+{% block content %}  
+<div class="container">
+        <div class="row" id="form">
             {{ wtf.quick_form(pitch_form)}}
         </div>
     </div>
-    {{ comment }}
-    {{ pitch }}
-    {{ category }}
+    <div class="info">
+    <h2>Your Pitch will be displayed here</h2>
+    <div class="card-group">
+    <div class="card">
+        <div class="card header">
+            {{ pitch }}
+        </div>
+        <div class="card-body">
+            {{ comment }}
+        </div>
+        <div class="card-footer">
+            {{ category }}
+        </div>
+    </div>
+    </div>
+</div>
+
+
 {% endblock %}
 
