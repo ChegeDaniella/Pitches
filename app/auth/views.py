@@ -15,7 +15,7 @@ def signup():
         db.session.add(user)
         db.session.commit()
 
-         mail_message("Welcome to 1 minute","email/welcome_user",user.email,user=user)
+        mail_message("Welcome to 1 minute","email/welcome_user",user.email,user=user)
         return redirect(url_for('auth.login'))
     
     return render_template('auth/sign_up.html', signup_form = form)
@@ -25,7 +25,7 @@ def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
         user = User.query.filter_by(email =login_form.email.data).first()
-        if user is not None and user.verify_password(login_form.password,data):
+        if user is not None and user.verify_password(login_form.password.data):
             login_user(user,login_form.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
 

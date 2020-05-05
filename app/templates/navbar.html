@@ -11,9 +11,9 @@
       </div>
       <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-              <!-- <li><a href="/pitch">Pitch</a></li> -->
+              <li><a href="/pitch">Pitch</a></li>
       </div>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-left">
         {% if current_user.is_authenticated %}
         <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
         <li style="color:white;padding:15px;">{{current_user.username}}</li>
@@ -22,6 +22,6 @@
         <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
         {% endif %}
       </ul>
-      <li><a href="/pitch">Pitch</a></li>
+     
   </div>
 </div>

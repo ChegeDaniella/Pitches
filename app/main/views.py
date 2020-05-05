@@ -10,13 +10,17 @@ def index():
     return render_template('index.html')
 
 @main.route('/pitch')
-@login_required
+# @login_required
 def Pitche():
+    # my_pitch = Pitch.query.get(id)
     form = PitchForm()
+
+    if id is None:
+        abort(404)
 
     if form.validate_on_submit():
         comment = form.comment.data
-        new_pitch = Pitches(comment)
+        new_pitch = Pitches(pitch,comment,category)
         new_pitch.save_pitch()
 
     return render_template('pitch.html' , pitch_form = form)
@@ -46,3 +50,4 @@ def update_profile(uname):
 
             return redirect(url_for('.profile',uname=user.username))
     return render_template('profile/update.html',form = form)
+

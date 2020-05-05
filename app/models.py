@@ -3,19 +3,34 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from app import login_manager
 
-class Pitches:
-    all_pitches = []
-
-    def __init__(self,comment):
-        self.comment = comment
-        # self.category = category
-
+class Pitches(db.Model):
+    __tablename__='pitches'
+    id = db.Column(db.Integer,primary_key = True)
+    pitch = db.Column(db.String(255))
+    comment = db.Column(db.String(255))
+    category = db.Column(db.String(255))
     def save_pitch(self):
-        Pitches.all_pitches.append(self)
+        db.session.add(self)
+        db.session.commit()
 
     @classmethod
-    def clear_reviews(cls):
-        Pitches.all_pitches.clear()   
+    def get_pitch(cls,id):
+        pitche = Pitch.Query.filter_by(id=id).first()
+        return pitche
+        # Pitches.all_pitches.append(self) 
+
+
+    # all_pitches = []
+
+    # def __init__(self,comment):
+    #     self.comment = comment
+    #     # self.category = category
+
+    
+
+    # @classmethod
+    # def clear_reviews(cls):
+    #     Pitches.all_pitches.clear()   
 
     # @classmethod
     # def get_pitches(cls,id):
@@ -57,4 +72,6 @@ class Role(db.Model):
     users = db.relationship('User',backref ='role',lazy ="dynamic")    
 
     def __repr__(self):
-        return f'User {self.name}'    
+        return f'User {self.name}'  
+        
+          
