@@ -3,7 +3,6 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 # from app import login_manager
 from sqlalchemy import text
-# import jwt
 import os
 
 @login_manager.user_loader
@@ -21,12 +20,6 @@ class Pitches(UserMixin,db.Model):
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()
-
-    # def __init__(self,pitch,comment,category):
-    #     self.pitch = pitch
-    #     self.comment = comment 
-    #     self.category =category
-
 
     @classmethod
     def get_pitch(cls,id):
@@ -46,7 +39,6 @@ class User(UserMixin,db.Model):
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
-    
     bio = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
     pitch = db.relationship('Pitches',backref = 'user',lazy="dynamic")
@@ -62,18 +54,9 @@ class User(UserMixin,db.Model):
     def verify_password(self,password):
         return check_password_hash(self.pass_secure,password)
 
-    
     def __repr__(self):
         return f'User{self.username}'
 
-# class Role(db.Model):
-#     __tablename__ = 'roles'
-
-#     id = db.Column(db.Integer,primary_key = True)
-#     name = db.Column(db.String(255))
-#     users = db.relationship('User',backref ='role',lazy ="dynamic")    
-
-#     def __repr__(self):
-#         return f'User {self.name}'  
+  
         
           
