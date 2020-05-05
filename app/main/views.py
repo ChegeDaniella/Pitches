@@ -38,11 +38,12 @@ def profile(uname):
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
 def update_profile(uname):
-    user = User.query.filter_by(username = uname).first()    
+    user = User.query.filter_by(username = uname).first()   
+    form = UpdateProfile() 
     if user is None:
         abort(404)
 
-        form = UpdateProfile()
+        
         if form.validate_on_submit():
             user.bio = form.bio.data
 
