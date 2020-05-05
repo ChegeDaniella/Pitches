@@ -10,7 +10,7 @@ def index():
     return render_template('index.html')
 
 @main.route('/pitch',methods = ['GET','POST'])
-# @login_required
+@login_required
 def Pitche():
     # my_pitch = Pitch.query.get(id)
     form = PitchForm()

@@ -25,31 +25,21 @@ class Pitches(db.Model):
         return pitche
         # Pitches.all_pitches.append(self) 
 
-
-    # all_pitches = []
-
-    # def __init__(self,comment):
-    #     self.comment = comment
-    #     # self.category = category
-
-    
-
-    # @classmethod
-    # def clear_reviews(cls):
-    #     Pitches.all_pitches.clear()   
-
-    # @classmethod
-    # def get_pitches(cls,id):
+    @classmethod
+    def clear_pitches(cls):
+        pitch = Pitch.Query.filter_by(id=id).first()
+        pitch.clear()
+        return pitch  
 
 
-class User(db.Model):
+class User(UserMixin,db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255))
+    password_hash = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
-    profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
 
     @property
