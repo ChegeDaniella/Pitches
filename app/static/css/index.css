@@ -5,8 +5,13 @@ h1 {
 }
 #about {
     text-align: center;
+    font-family: 'Patua One', cursive;
+    font-size: 25px;
 }
 img {
     height: 500px;
     width:590px;
+}
+.head {
+    font-size: 40px;
 }

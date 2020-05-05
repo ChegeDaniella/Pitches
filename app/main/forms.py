@@ -4,6 +4,7 @@ from wtforms.validators import Required
 
 class PitchForm(FlaskForm):
     pitch = StringField('Enter Pitch', validators=[Required()])
+    comment = StringField('Enter comments', validators=[Required()])
     Categories = SelectField('Which minute', choices=[('hlh','health'),('spt','Sports')])
     submit = SubmitField('Submit')
 

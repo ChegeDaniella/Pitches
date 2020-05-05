@@ -13,6 +13,12 @@ class Pitches(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    # def __init__(self,pitch,comment,category):
+    #     self.pitch = pitch
+    #     self.comment = comment 
+    #     self.category =category
+
+
     @classmethod
     def get_pitch(cls,id):
         pitche = Pitch.Query.filter_by(id=id).first()

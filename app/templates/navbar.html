@@ -1,3 +1,9 @@
+
+{% block styles%}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
 <div class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
       <div class="navbar-header">
@@ -19,7 +25,7 @@
         <li style="color:white;padding:15px;">{{current_user.username}}</li>
         <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
         {%else%}
-        <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+        <li><a href="{{url_for('auth.login')}}"><i class="fas fa-sign-in-alt"></i>Sign in</a></li>
         {% endif %}
       </ul>
      
