@@ -63,7 +63,7 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User{self.username}'
 
-class Commments(UserMixin,db.Model):
+class Comments(UserMixin,db.Model):
     __tablename__='comments'
     id = db.Column(db.Integer,primary_key=True)
     comment_content = db.Column(db.String())
