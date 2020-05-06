@@ -3,7 +3,7 @@ import os
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
     UPLOADED_PHOTOS_DEST ='app/static/photos'
-    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
+    
     SQLALCHEMY_TRACK_MODIFICATION= True
     
     
@@ -22,12 +22,12 @@ class Config:
     # def init_app(app):
     #     pass
 
-# class TestConfig(Config):
-#     # DATABASE_PASS=os.environ.get('DATABASE_PASS')
-#     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://dani:4321@localhost/pitches_test'
+class TestConfig(Config):
+    # DATABASE_PASS=os.environ.get('DATABASE_PASS')
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://dany:4321@localhost/pitch_test'
 
 class ProdConfig(Config):
-    pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 class DevConfig(Config):
     # SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URI')
@@ -38,5 +38,5 @@ class DevConfig(Config):
 config_options = {
 'development':DevConfig,
 'production':ProdConfig,
-# 'test':TestConfig
+'test':TestConfig
 } 

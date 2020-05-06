@@ -25,6 +25,7 @@ class PitchesModelTest(unittest.TestCase):
 
         self.new_pitch.save_pitch
         got_pitch = Pitches.get_pitch(12345)
-        self.assertTrue(len(got_pitch) == 1)     
+        self.assertTrue(len(got_pitch) == 1)   
+         
 
                  

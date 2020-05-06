@@ -5,8 +5,8 @@ from app import db
 from flask_migrate import Migrate,MigrateCommand
 
 #create app instance
-app = create_app('development')
-# app = create_app('test')
+app = create_app('production')
+app = create_app('test')
 
 migrate = Migrate(app,db)
 
@@ -25,7 +25,7 @@ def test():
 
 @manager.shell
 def make_shell_context():
-    return dict(app = app,db = db, User = User, Pitches = Pitches)
+    return dict(app = app,db = db, User = User, Pitches = Pitches, Comments = Comments)
     
 if __name__ == '__main__':
     manager.run()
