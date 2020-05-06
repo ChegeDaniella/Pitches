@@ -1,6 +1,6 @@
 from flask import render_template,redirect,url_for,flash,request
 from app.models import User
-from .forms import SignUpForm, LoginForm,validate_email
+from .forms import SignUpForm, LoginForm
 from .. import db
 from . import auth
 from flask_login import login_user,logout_user,login_required
@@ -11,15 +11,20 @@ from ..email import mail_message
 def signup():
     form = SignUpForm()
     if form.validate_on_submit():
+        # import pdb; pdb.set_trace()
         user = User(email = form.email.data, username = form.username.data, password = form.password.data)
+        # if User.query.filter_by(email = form.email.data).first():
+        #     flash('There is an account with the email', 'danger')
+        #     return render_template('auth/sign_up.html', signup_form = form)
+
         db.session.add(user)
         db.session.commit()
 
         mail_message("Welcome to 1 minute","email/welcome_user",user.email,user=user)
+        flash("Successfully submitted", "success")
         return redirect(url_for('auth.login'))
-    if user.is_authenticated():
-        return redirect(url_for('main.index'))
-     
+        
+    
     return render_template('auth/sign_up.html', signup_form = form)
 
 @auth.route('/login', methods=['GET','POST'])

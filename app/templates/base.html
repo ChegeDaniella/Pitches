@@ -2,4 +2,25 @@
 
 {% block navbar %}
     {% include 'navbar.html' %}
-{% endblock %}    
+{% endblock %}  
+{%block styles %}
+  {{super()}}
+  <!--Importing the simple mde css and js files  -->
+  {{ simplemde.css}}
+  {{ simplemde.js }}
+
+{% endblock %}  
+{%with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+    {% for type, content in messages %}
+        <div class="alert alert-{{ type }} alert-dismissible my-4" role="alert">
+            <button class="close" type="button"
+                data-dismiss="alert"
+                arial-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ content }}
+        </div>
+    {% endfor %}
+{% endif %}
+{% endwith %} 

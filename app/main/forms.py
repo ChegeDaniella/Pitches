@@ -12,6 +12,9 @@ class UpdateProfile(FlaskForm):
     bio = TextAreaField("Tell us about yourself", validators = [Required()])
     submit = SubmitField("Submit")
 
+class PlainComments(FlaskForm):
+    comment = TextAreaField("What do you think of this pitch", validators = [Required()])
+    submit = SubmitField("Submit")
     
 
     

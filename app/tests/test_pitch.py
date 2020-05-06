@@ -10,7 +10,7 @@ class PitchesModelTest(unittest.TestCase):
     def tearDown(self):
         Pitches.query.delete()
 
-    def test_password_verification(self):
+    def test __init__(self):
         self.assertEquals(self.new_pitch.pitch,'new')    
         self.assertEquals(self.new_pitch.comment,'I love darkness') 
         self.assertEquals(self.new_pitch.category='sports') 
