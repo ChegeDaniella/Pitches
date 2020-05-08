@@ -14,7 +14,5 @@ class CommentsModelTest(unittest.TestCase):
         self.assertEquals(self.new_comments.pitches_id,'I love darkness',) 
         self.assertEquals(self.new_comments.user_id, 123)     
 
-    # def test_save_pitch(self):
-    #     self.new_pitch.save_pitch()
-    #     self.assertTrue(len(Pitches.query.all())>0)   
+
                

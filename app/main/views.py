@@ -14,7 +14,7 @@ def index():
 def Pitche():
     # my_pitch = Pitch.query.get(id)
     form = PitchForm()
-    comm_form = PlainComments()
+    
     pitch = form.pitch.data
     comment = form.comment.data
     category = form.Categories.data
@@ -22,18 +22,12 @@ def Pitche():
     if id is None:
         abort(404)
 
-    if comm_form.validate_on_submit():
-        comment_data=comm_form.comment.data
-        new_comment = Commments()
-        new_comment.save_comment()
-    # return redirect('pitch.html')    
-
     if form.validate_on_submit():
         new_pitch = Pitches()
         new_pitch.save_pitch()
 
 
-    return render_template('pitch.html' , pitch_form = form, comment = comment, pitch=pitch,category = category,comm_form=comm_form )
+    return render_template('pitch.html' , pitch_form = form, comment = comment, pitch=pitch,category = category)
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -64,5 +58,15 @@ def update_profile(uname):
         return redirect(url_for('.profile', uname=user.username))
     return render_template('profile/update.html',form = form)
 
-   
+@main.route('/comment', methods=['GET','POST'])
+def comments():
+    comm_form = PlainComments()
+    comment_data=comm_form.comment.data
+    if comm_form.validate_on_submit():
+        
+        new_comment = Comments()
+        new_comment.save_comment()
+
+    return render_template("comments.html", comm_form=comm_form,comment_data=comment_data)    
+
 
